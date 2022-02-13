@@ -43,6 +43,12 @@ public class Restaurante {
 		
 	}
 	
+	public ArrayList<Combo> getCombos(){
+		
+		return combos;
+		
+	}
+	
 	
 	public void cargarInformacionRestaurante(String archivoIngredientes, String archivoMenu, String archivoCombos) {
 		

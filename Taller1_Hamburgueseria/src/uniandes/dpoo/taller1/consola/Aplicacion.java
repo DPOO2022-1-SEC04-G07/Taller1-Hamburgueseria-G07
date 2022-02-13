@@ -24,10 +24,17 @@ public class Aplicacion {
 
 	}
 	
-	public void ejecutarOpcion(int opcionSeleccionada) {
+	public void ejecutarOpcion(int opcionSeleccionada, ArrayList<Ingrediente> ingredientes, ArrayList<ProductoMenu> productosMenu) {
 		
-		if (opcionSeleccionada == 1)
-			System.out.println("\n1");
+		if (opcionSeleccionada == 1) {
+			Iterator<ProductoMenu> iterator = productosMenu.iterator();
+			while (iterator.hasNext())
+			{
+				ProductoMenu productoMenu = iterator.next();
+				String nombre = productoMenu.getNombre();
+				System.out.println(nombre);
+			}
+		}
 		else if (opcionSeleccionada == 2) {
 			String nombreCliente = input("Ingrese su nombre: "); 
 			String direccionCliente = input("Ingrese su dirección: ");
@@ -57,6 +64,9 @@ public class Aplicacion {
 		
 		Restaurante restaurante = new Restaurante();
 		
+		ArrayList<Ingrediente> ingredientes = restaurante.getIngredientes();
+		ArrayList<ProductoMenu> productosMenu = restaurante.getMenuBase();
+		
 		boolean continuar = true;
 		while (continuar == true)
 		{
@@ -71,7 +81,7 @@ public class Aplicacion {
 			}
 			else
 			{
-				consola.ejecutarOpcion(opcionSeleccionada);
+				consola.ejecutarOpcion(opcionSeleccionada,ingredientes, productosMenu);
 			}
 		}
 	}
