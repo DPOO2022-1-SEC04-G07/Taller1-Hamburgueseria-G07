@@ -25,10 +25,11 @@ public class Aplicacion {
 
 	}
 	
-	public void ejecutarOpcion(int opcionSeleccionada, ArrayList<Ingrediente> ingredientes, ArrayList<ProductoMenu> productosMenu, ArrayList<Combo> combos) {
+	public void ejecutarOpcion(int opcionSeleccionada, Restaurante restaurante) {
 		
 		if (opcionSeleccionada == 1) {
 			System.out.println("\nProductos:");
+			ArrayList<ProductoMenu> productosMenu = restaurante.getMenuBase();
 			Iterator<ProductoMenu> iterator = productosMenu.iterator();
 			while (iterator.hasNext())
 			{
@@ -38,6 +39,7 @@ public class Aplicacion {
 			}
 			
 			System.out.println("\nCombos:");
+			ArrayList<Combo> combos = restaurante.getCombos();
 			Iterator<Combo> iterator2 = combos.iterator();
 			while(iterator2.hasNext())
 			{
@@ -47,6 +49,7 @@ public class Aplicacion {
 			}
 			
 			System.out.println("\nAdiciones:");
+			ArrayList<Ingrediente> ingredientes = restaurante.getIngredientes();
 			Iterator<Ingrediente> iterator3 = ingredientes.iterator();
 			while(iterator3.hasNext())
 			{
@@ -54,11 +57,13 @@ public class Aplicacion {
 				String nombre3 = ingrediente.getNombre();
 				System.out.println(nombre3);
 			}
-			
 		}
 		else if (opcionSeleccionada == 2) {
-			String nombreCliente = input("Ingrese su nombre: "); 
+			
+			String nombreCliente = input("\nIngrese su nombre: "); 
 			String direccionCliente = input("Ingrese su dirección: ");
+			restaurante.inicarPedido(nombreCliente, direccionCliente);
+			System.out.println("\nNombre y dirección: Exitosos. Seleccione la opcion 3 para agregar comida.");
 			
 		}    
 		else if (opcionSeleccionada == 3)
@@ -85,10 +90,6 @@ public class Aplicacion {
 		
 		Restaurante restaurante = new Restaurante();
 		
-		ArrayList<Ingrediente> ingredientes = restaurante.getIngredientes();
-		ArrayList<ProductoMenu> productosMenu = restaurante.getMenuBase();
-		ArrayList<Combo> combos = restaurante.getCombos();
-		
 		boolean continuar = true;
 		while (continuar == true)
 		{
@@ -103,7 +104,7 @@ public class Aplicacion {
 			}
 			else
 			{
-				consola.ejecutarOpcion(opcionSeleccionada,ingredientes, productosMenu, combos);
+				consola.ejecutarOpcion(opcionSeleccionada, restaurante);
 			}
 		}
 	}

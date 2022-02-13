@@ -6,13 +6,14 @@ public class Pedido {
 	// Atributos
 	// ************************************************************************
 	
-	private static int numeroPedidos;
+	private static int numeroPedidos = 0;
 	
 	private int idPedido;
 	
 	private String nombreCliente;
 	
 	private String direccionCliente;
+	
 
 	// ************************************************************************
 	// Constructores
@@ -22,6 +23,9 @@ public class Pedido {
 	{
 		this.nombreCliente = nombreCliente;
 		this.direccionCliente = direccionCliente;
+		Pedido.numeroPedidos = numeroPedidos + 1;
+		this.idPedido = numeroPedidos * 13;
+		
 	}
 	
 	public int getIdPedido() {

@@ -13,7 +13,14 @@ public class Restaurante {
 	
 	private ArrayList<Combo> combos;
 	
+	private ArrayList<Pedido> pedidos;
+	
+	private Pedido pedidoActual;
+	
 	public Restaurante() {
+		
+		ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+		this.pedidos = pedidos;
 		
 		String archivoIngredientes = "./data/ingredientes.txt";
 		String archivoMenu = "./data/menu.txt";
@@ -26,8 +33,9 @@ public class Restaurante {
 	
 	public void inicarPedido(String nombreCliente, String direccionCliente)
 	{
+		int longitudPedidos = pedidos.size();
 		Pedido pedido = new Pedido (nombreCliente, direccionCliente);
-		
+		this.pedidoActual = pedido;
 	}
 	
 	public ArrayList<ProductoMenu> getMenuBase(){

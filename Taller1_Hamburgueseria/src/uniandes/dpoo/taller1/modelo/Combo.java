@@ -34,13 +34,23 @@ public class Combo implements Producto{
 		String cambioNombre = nombreCombo + ItemCombo + "; ";
 		
 		this.nombreCombo = cambioNombre;
-		
-		
-		
-		
+	
 	}
 	
 	public int getPrecio() {
+		
+		String[] partes = nombreCombo.split(":");
+		
+		String[] partes2 = partes[1].split(";");
+		
+		for (int i=0; i<partes2.length;i++)
+		{
+			System.out.println(partes2[i]);
+		}
+		
+		
+		
+		
 		
 	}
 }
