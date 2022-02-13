@@ -29,9 +29,14 @@ public class Combo implements Producto{
 		return nombreCombo;
 	}
 	
-	public void agregarProducto(Producto nuevoItem) {
+	public void agregarItemACombo(Producto ItemCombo) {
 		
-		String nombreCombo = 
+		String cambioNombre = nombreCombo + 
+		
+		
+	}
+	
+	public int getPrecio() {
 		
 	}
 }

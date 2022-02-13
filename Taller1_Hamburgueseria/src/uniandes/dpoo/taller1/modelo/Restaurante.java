@@ -1,12 +1,17 @@
 package uniandes.dpoo.taller1.modelo;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 import uniandes.dpoo.taller1.procesamiento.LoaderInformacionArchivos;
 
 public class Restaurante {
+	
+	private ArrayList<Ingrediente> ingredientes;
+	
+	private ArrayList<ProductoMenu> productosMenu;
+	
+	private ArrayList<Combo> combos;
 	
 	public Restaurante() {
 		
@@ -25,13 +30,25 @@ public class Restaurante {
 		
 	}
 	
-	public ArrayList<Ingrediente> getIngredientes(){
-		return ingredientes
+	public ArrayList<ProductoMenu> getMenuBase(){
+		
+		return productosMenu;
+		
 	}
+	
+	
+	public ArrayList<Ingrediente> getIngredientes(){
+		
+		return ingredientes;
+		
+	}
+	
 	
 	public void cargarInformacionRestaurante(String archivoIngredientes, String archivoMenu, String archivoCombos) {
 		
 		cargarIngredientes(archivoIngredientes);
+		cargarMenu(archivoMenu);
+		///cargarCombos(archivoCombos, productosMenu);
 		
 	}
 	
@@ -49,23 +66,44 @@ public class Restaurante {
 			System.out.println(e.getMessage());
 	    }
 		
+		this.ingredientes = ingredientes;
 	}
 	
-	private void CargarMenu(String archivoMenu)
+	private void cargarMenu(String archivoMenu)
 	{
 		// Instrucciones para realizar la lectura del archivo menu.txt.
 	    // La informacion de los productos queda en el ArrayList productosMenu
 	    ArrayList<ProductoMenu> productosMenu = new ArrayList<ProductoMenu>();
 	    try
 	    {
-		productosMenu = LoaderInformacionArchivos.leerInfoArchivoProductosMenu("./data/menu.txt");
-		System.out.println("OK Se cargó el archivo menu.txt con información de los Productos Menu.");
+	    	productosMenu = LoaderInformacionArchivos.leerInfoArchivoProductosMenu("./data/menu.txt");
+	    	System.out.println("OK Se cargó el archivo menu.txt con información de los Productos Menu.");
 	    }
 	    catch (Exception e)
 	    {
-		System.out.println("ERROR: Problema al leer el archivo menu.txt");
-		System.out.println(e.getMessage());
+	    	System.out.println("ERROR: Problema al leer el archivo menu.txt");
+	    	System.out.println(e.getMessage());
 	    }
+	    
+	    this.productosMenu = productosMenu;
 	}
 
+	private void cargarCombos(String archivoCombos, ArrayList<ProductoMenu> productosMenu) {
+		// Instrucciones para usar la lectura del archivo combos.txt
+	    // La informacion de los combos queda en el ArrayList combos
+	    ArrayList<Combo> combos = new ArrayList<Combo>();
+	    try
+	    {
+	    	combos = LoaderInformacionArchivos.leerInfoArchivoCombos("./data/combos.txt", productosMenu);
+	    	System.out.println("OK Se cargó el archivo combos.txt con información de los Combos.");
+	    }
+	    catch (Exception e)
+	    {
+	    	
+	    	System.out.println("ERROR: Problema al leer el archivo combos.txt");
+	    	System.out.println(e.getMessage());
+		
+	    }
+	    this.combos = combos;
+	}
 }

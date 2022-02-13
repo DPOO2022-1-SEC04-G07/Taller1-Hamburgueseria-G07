@@ -83,12 +83,12 @@ public class LoaderInformacionArchivos {
 			// Separar los valores que estan en la linea por el caracter ';'
 			String[] partes = linea.split(";");
 			double porcentaje = Double.parseDouble( partes[1].substring(0, partes[1].length()-1)); // eliminar el caracter '%' y convertir el porcentaje a un valor numerico double
-
-			Combo nuevoCombo = new Combo(partes[0], porcentaje);   // creacion de un objeto Combo con su nombre y porcentaje de descuento
+			
+			Combo nuevoCombo = new Combo(partes[0]+ ": ", porcentaje);   // creacion de un objeto Combo con su nombre y porcentaje de descuento
 
 			for (int i = 2; i < partes.length; i++)
 			{
-				nuevoCombo.agregarProducto(partes[i]);    // SIMPLIFICACION: se agrega el nombre de un "productoMenu" a un combo
+				nuevoCombo.agregarItemACombo(partes[i]);    // SIMPLIFICACION: se agrega el nombre de un "productoMenu" a un combo
 				                                          // MEJORA: Buscar y agregar el ProductoMenu con el nombre en la lista productosMenu (parametro)
 			}
 
