@@ -28,6 +28,7 @@ public class Aplicacion {
 	public void ejecutarOpcion(int opcionSeleccionada, Restaurante restaurante) {
 		
 		if (opcionSeleccionada == 1) {
+			int numeroInicial = 1;
 			System.out.println("\nProductos:");
 			ArrayList<ProductoMenu> productosMenu = restaurante.getMenuBase();
 			Iterator<ProductoMenu> iterator = productosMenu.iterator();
@@ -35,7 +36,8 @@ public class Aplicacion {
 			{
 				ProductoMenu productoMenu = iterator.next();
 				String nombre = productoMenu.getNombre();
-				System.out.println(nombre);
+				System.out.println(Integer.toString(numeroInicial) + ". " + nombre);
+				numeroInicial = numeroInicial + 1; 
 			}
 			
 			System.out.println("\nCombos:");
@@ -45,7 +47,16 @@ public class Aplicacion {
 			{
 				Combo combo = iterator2.next();
 				String nombre2 = combo.getNombre();
-				System.out.print(nombre2+"\n");
+				ArrayList<ProductoMenu> productosMenuLista = combo.getProductosMenu();
+				Iterator<ProductoMenu> subIterador = productosMenuLista.iterator();
+				System.out.print(Integer.toString(numeroInicial) + ". " + nombre2+": \n");
+				while(subIterador.hasNext() == true)
+				{
+					ProductoMenu productoMenu = subIterador.next();
+					String nombreProducto = productoMenu.getNombre();
+					System.out.println(" - "+ nombreProducto);
+				}
+				numeroInicial = numeroInicial + 1; 
 			}
 			
 			System.out.println("\nAdiciones:");
@@ -55,10 +66,12 @@ public class Aplicacion {
 			{
 				Ingrediente ingrediente = iterator3.next();
 				String nombre3 = ingrediente.getNombre();
-				System.out.println(nombre3);
+				System.out.println(Integer.toString(numeroInicial) + ". " + nombre3);
+				numeroInicial = numeroInicial + 1; 
 			}
 		}
-		else if (opcionSeleccionada == 2) {
+		else if (opcionSeleccionada == 2) 
+		{
 			
 			String nombreCliente = input("\nIngrese su nombre: "); 
 			String direccionCliente = input("Ingrese su dirección: ");
@@ -66,8 +79,44 @@ public class Aplicacion {
 			System.out.println("\nNombre y dirección: Exitosos. Seleccione la opcion 3 para agregar comida.");
 			
 		}    
-		else if (opcionSeleccionada == 3)
-			System.out.println("\n3");
+		else if (opcionSeleccionada == 3) 
+		{
+			int numeroInicial = 1;
+			System.out.println("\nProductos:");
+			ArrayList<ProductoMenu> productosMenu = restaurante.getMenuBase();
+			Iterator<ProductoMenu> iterator = productosMenu.iterator();
+			while (iterator.hasNext())
+			{
+				ProductoMenu productoMenu = iterator.next();
+				String nombre = productoMenu.getNombre();
+				System.out.println(Integer.toString(numeroInicial) + ". " + nombre);
+				numeroInicial = numeroInicial + 1; 
+			}
+			
+			System.out.println("\nCombos:");
+			ArrayList<Combo> combos = restaurante.getCombos();
+			Iterator<Combo> iterator2 = combos.iterator();
+			while(iterator2.hasNext())
+			{
+				Combo combo = iterator2.next();
+				String nombre2 = combo.getNombre();
+				ArrayList<ProductoMenu> productosMenuLista = combo.getProductosMenu();
+				Iterator<ProductoMenu> subIterador = productosMenuLista.iterator();
+				System.out.print(Integer.toString(numeroInicial) + ". " + nombre2+": \n");
+				while(subIterador.hasNext() == true)
+				{
+					ProductoMenu productoMenu = subIterador.next();
+					String nombreProducto = productoMenu.getNombre();
+					System.out.println(" - "+ nombreProducto);
+				}
+				numeroInicial = numeroInicial + 1; 
+			}
+			
+			int opcionProductoBase = Integer.parseInt(input("\nIngrese el número del producto seleccionado: "));
+			restaurante.productoBase(opcionProductoBase);
+			
+			
+		}
 		else if (opcionSeleccionada == 4)
 			System.out.println("\n4");
 		else if (opcionSeleccionada == 5)

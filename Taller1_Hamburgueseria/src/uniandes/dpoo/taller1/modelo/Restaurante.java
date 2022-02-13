@@ -38,6 +38,25 @@ public class Restaurante {
 		this.pedidoActual = pedido;
 	}
 	
+	public String productoBase(int opcionProductoBase)
+	{
+		if (opcionProductoBase<=productosMenu.size())
+		{
+			ProductoMenu productoBase = productosMenu.get(opcionProductoBase - 1);
+			productoBase.getNombre();
+		}
+		else
+		{
+			Combo comboBase = combos.get(opcionProductoBase - productosMenu.size() - 1);
+			System.out.println("\nSeleccionó: " + comboBase.getNombre());
+			
+		}
+	}
+	
+	public Pedido getPedidoEnCurso() {
+		return pedidoActual;
+	}
+	
 	public ArrayList<ProductoMenu> getMenuBase(){
 		
 		return productosMenu;

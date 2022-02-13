@@ -1,5 +1,7 @@
 package uniandes.dpoo.taller1.modelo;
 
+import java.util.ArrayList;
+
 public class Combo implements Producto{
 	
 	// ************************************************************************
@@ -10,14 +12,20 @@ public class Combo implements Producto{
 	
 	private String nombreCombo;
 	
+	private ArrayList<ProductoMenu> productosMenu;
+	
 	// ************************************************************************
 	// Constructores
 	// ************************************************************************
 	
 	public Combo(String nombreCombo ,double descuento)
 	{
+		
 		this.nombreCombo = nombreCombo;
 		this.descuento = descuento;
+		ArrayList<ProductoMenu> productosMenu = new ArrayList<ProductoMenu>();
+		this.productosMenu = productosMenu;
+		
 	}
 	
 	// ************************************************************************
@@ -29,12 +37,18 @@ public class Combo implements Producto{
 		return nombreCombo;
 	}
 	
-	public void agregarItemACombo(String ItemCombo) {
+	public void agregarItemACombo(ProductoMenu ItemCombo) {
 		
-		String cambioNombre = nombreCombo + ItemCombo + "; ";
+		ArrayList<ProductoMenu> lista = productosMenu;
+		lista.add(ItemCombo);
+		this.productosMenu = lista;
 		
-		this.nombreCombo = cambioNombre;
 	
+	}
+	
+	public ArrayList<ProductoMenu> getProductosMenu()
+	{
+		return productosMenu;
 	}
 	
 	public int getPrecio() {

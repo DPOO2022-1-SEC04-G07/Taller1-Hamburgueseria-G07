@@ -85,13 +85,23 @@ public class LoaderInformacionArchivos {
 			String[] partes = linea.split(";");
 			double porcentaje = Double.parseDouble( partes[1].substring(0, partes[1].length()-1)); // eliminar el caracter '%' y convertir el porcentaje a un valor numerico double
 			
-			Combo nuevoCombo = new Combo(partes[0]+ ": ", porcentaje);   // creacion de un objeto Combo con su nombre y porcentaje de descuento
+			Combo nuevoCombo = new Combo(partes[0], porcentaje);   // creacion de un objeto Combo con su nombre y porcentaje de descuento
 
 			for (int i = 2; i < partes.length; i++)
 			{
-				nuevoCombo.agregarItemACombo(partes[i]);    // SIMPLIFICACION: se agrega el nombre de un "productoMenu" a un combo
 				
-				// MEJORA: Buscar y agregar el ProductoMenu con el nombre en la lista productosMenu (parametro)
+				Iterator<ProductoMenu> iterador = productosMenu.iterator();
+				while (iterador.hasNext() == true)
+				{
+					ProductoMenu productoMenu = iterador.next();
+					String nombre = productoMenu.getNombre();
+					if (nombre.equals(partes[i]))
+					{
+						nuevoCombo.agregarItemACombo(productoMenu);
+					}
+				}
+				
+				
 			}
 			
 			combos.add(nuevoCombo);
