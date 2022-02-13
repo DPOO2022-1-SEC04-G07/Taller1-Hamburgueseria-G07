@@ -29,9 +29,13 @@ public class Combo implements Producto{
 		return nombreCombo;
 	}
 	
-	public void agregarItemACombo(Producto ItemCombo) {
+	public void agregarItemACombo(String ItemCombo) {
 		
-		String cambioNombre = nombreCombo + 
+		String cambioNombre = nombreCombo + ItemCombo + "; ";
+		
+		this.nombreCombo = cambioNombre;
+		
+		
 		
 		
 	}

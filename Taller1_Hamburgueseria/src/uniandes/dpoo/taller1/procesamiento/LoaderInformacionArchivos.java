@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import uniandes.dpoo.taller1.modelo.Combo;
 import uniandes.dpoo.taller1.modelo.Ingrediente;
@@ -89,14 +90,16 @@ public class LoaderInformacionArchivos {
 			for (int i = 2; i < partes.length; i++)
 			{
 				nuevoCombo.agregarItemACombo(partes[i]);    // SIMPLIFICACION: se agrega el nombre de un "productoMenu" a un combo
-				                                          // MEJORA: Buscar y agregar el ProductoMenu con el nombre en la lista productosMenu (parametro)
+				
+				// MEJORA: Buscar y agregar el ProductoMenu con el nombre en la lista productosMenu (parametro)
 			}
-
-			combos.add( nuevoCombo );
-
+			
+			combos.add(nuevoCombo);
+			
 			linea = br.readLine(); // leer la proxima linea en el archivo con un nuevo Combo 
 		}
 		br.close();
+		
 		return combos;
 	}
 	

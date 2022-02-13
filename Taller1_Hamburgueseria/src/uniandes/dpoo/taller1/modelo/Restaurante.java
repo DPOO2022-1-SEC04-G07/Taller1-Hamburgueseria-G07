@@ -54,7 +54,7 @@ public class Restaurante {
 		
 		cargarIngredientes(archivoIngredientes);
 		cargarMenu(archivoMenu);
-		///cargarCombos(archivoCombos, productosMenu);
+		cargarCombos(archivoCombos, productosMenu);
 		
 	}
 	

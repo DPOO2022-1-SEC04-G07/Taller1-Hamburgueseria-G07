@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import uniandes.dpoo.taller1.modelo.Combo;
 import uniandes.dpoo.taller1.modelo.Ingrediente;
 import uniandes.dpoo.taller1.modelo.ProductoMenu;
 import uniandes.dpoo.taller1.modelo.Restaurante;
@@ -24,9 +25,10 @@ public class Aplicacion {
 
 	}
 	
-	public void ejecutarOpcion(int opcionSeleccionada, ArrayList<Ingrediente> ingredientes, ArrayList<ProductoMenu> productosMenu) {
+	public void ejecutarOpcion(int opcionSeleccionada, ArrayList<Ingrediente> ingredientes, ArrayList<ProductoMenu> productosMenu, ArrayList<Combo> combos) {
 		
 		if (opcionSeleccionada == 1) {
+			System.out.println("\nProductos:");
 			Iterator<ProductoMenu> iterator = productosMenu.iterator();
 			while (iterator.hasNext())
 			{
@@ -34,6 +36,25 @@ public class Aplicacion {
 				String nombre = productoMenu.getNombre();
 				System.out.println(nombre);
 			}
+			
+			System.out.println("\nCombos:");
+			Iterator<Combo> iterator2 = combos.iterator();
+			while(iterator2.hasNext())
+			{
+				Combo combo = iterator2.next();
+				String nombre2 = combo.getNombre();
+				System.out.print(nombre2+"\n");
+			}
+			
+			System.out.println("\nAdiciones:");
+			Iterator<Ingrediente> iterator3 = ingredientes.iterator();
+			while(iterator3.hasNext())
+			{
+				Ingrediente ingrediente = iterator3.next();
+				String nombre3 = ingrediente.getNombre();
+				System.out.println(nombre3);
+			}
+			
 		}
 		else if (opcionSeleccionada == 2) {
 			String nombreCliente = input("Ingrese su nombre: "); 
@@ -66,6 +87,7 @@ public class Aplicacion {
 		
 		ArrayList<Ingrediente> ingredientes = restaurante.getIngredientes();
 		ArrayList<ProductoMenu> productosMenu = restaurante.getMenuBase();
+		ArrayList<Combo> combos = restaurante.getCombos();
 		
 		boolean continuar = true;
 		while (continuar == true)
@@ -81,7 +103,7 @@ public class Aplicacion {
 			}
 			else
 			{
-				consola.ejecutarOpcion(opcionSeleccionada,ingredientes, productosMenu);
+				consola.ejecutarOpcion(opcionSeleccionada,ingredientes, productosMenu, combos);
 			}
 		}
 	}
