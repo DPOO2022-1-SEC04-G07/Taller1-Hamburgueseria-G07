@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import uniandes.dpoo.taller1.modelo.Restaurante;
+
 public class Aplicacion {
+	
 	
 	public void mostrarMenu() {
 		
@@ -47,6 +50,11 @@ public class Aplicacion {
 	public static void main(String[] args) {
 		
 		Aplicacion consola = new Aplicacion();
+		
+		Restaurante restaurante = new Restaurante();
+		
+		
+		
 		
 		boolean continuar = true;
 		while (continuar == true)

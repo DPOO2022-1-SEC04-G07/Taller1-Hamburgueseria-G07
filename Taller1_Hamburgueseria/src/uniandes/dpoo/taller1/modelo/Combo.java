@@ -28,4 +28,9 @@ public class Combo implements Producto{
 		
 		return nombreCombo;
 	}
+	
+	public void agregarProducto(Producto nuevoItem) {
+		
+		
+	}
 }
