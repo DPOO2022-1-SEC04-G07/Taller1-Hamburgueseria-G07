@@ -36,6 +36,16 @@ public class ProductoMenu  implements Producto{
 		
 	}
 	
+	public String generarTextoFactura() {
+		
+		String nombreProducto = nombre;
+		String precioProducto = Integer.toString(precioBase);
+		
+		return nombreProducto + ": " + precioProducto;
+		
+				
+	}
+	
 	
 
 }

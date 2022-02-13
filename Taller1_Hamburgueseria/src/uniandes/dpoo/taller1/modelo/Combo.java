@@ -31,6 +31,7 @@ public class Combo implements Producto{
 	
 	public void agregarProducto(Producto nuevoItem) {
 		
+		String nombreCombo = 
 		
 	}
 }
