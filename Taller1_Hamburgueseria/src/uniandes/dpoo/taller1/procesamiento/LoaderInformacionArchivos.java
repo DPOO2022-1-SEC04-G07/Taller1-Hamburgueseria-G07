@@ -106,6 +106,7 @@ public class LoaderInformacionArchivos {
 			
 			combos.add(nuevoCombo);
 			
+			
 			linea = br.readLine(); // leer la proxima linea en el archivo con un nuevo Combo 
 		}
 		br.close();

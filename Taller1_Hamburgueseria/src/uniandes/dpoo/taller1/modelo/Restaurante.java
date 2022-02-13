@@ -33,17 +33,16 @@ public class Restaurante {
 	
 	public void inicarPedido(String nombreCliente, String direccionCliente)
 	{
-		int longitudPedidos = pedidos.size();
 		Pedido pedido = new Pedido (nombreCliente, direccionCliente);
 		this.pedidoActual = pedido;
 	}
 	
-	public String productoBase(int opcionProductoBase)
+	public void productoBase(int opcionProductoBase)
 	{
 		if (opcionProductoBase<=productosMenu.size())
 		{
 			ProductoMenu productoBase = productosMenu.get(opcionProductoBase - 1);
-			productoBase.getNombre();
+			System.out.println("\nSeleccionó: " + productoBase.getNombre());
 		}
 		else
 		{

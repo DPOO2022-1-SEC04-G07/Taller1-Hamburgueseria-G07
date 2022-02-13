@@ -1,6 +1,7 @@
 package uniandes.dpoo.taller1.modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Combo implements Producto{
 	
@@ -53,18 +54,24 @@ public class Combo implements Producto{
 	
 	public int getPrecio() {
 		
-		String[] partes = nombreCombo.split(":");
+		double suma = 0;
 		
-		String[] partes2 = partes[1].split(";");
-		
-		for (int i=0; i<partes2.length;i++)
+		Iterator<ProductoMenu> iterador = productosMenu.iterator();
+		while(iterador.hasNext() == true)
 		{
-			System.out.println(partes2[i]);
+			ProductoMenu productoMenu = iterador.next();
+			double precio = productoMenu.getPrecio() * descuento;
+			
+			suma = suma + precio;
 		}
 		
-		
-		
-		
+		return (int)suma;
 		
 	}
+		
+	public String generarTextoFactura()
+	{
+		return nombreCombo + ": " + Integer.toString(getPrecio());
+	}
+		
 }
